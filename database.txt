@@ -1,0 +1,52 @@
+CREATing database:
+CREATE DATABASE dbtable
+CREATing table:
+CREATE TABLE details (
+firstname varchar(255),
+lastname varchar(255),
+number varchar(255),
+email varchar(255),
+password varchar(255),
+address varchar(255)
+);
+
+
+<form action="registration.php" method="post" >
+        Number:<input type="int" name="num" placeholder="Mobile Number"><br>
+        E-mail: <input type="text" name="email" placeholder="Email"><br>
+        <label for="dept">Address: </label>
+        <input type="text" name="address" placeholder="Address"><br>
+         Payment method:
+         <input type="checkbox" id="a1" name="a1" value="Bkash">
+<img src="image/bk.png" alt=""><br>
+<input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+<label for="vehicle2"> I have a car</label><br>
+<input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+<label for="vehicle3"> I have a boat</label><br> 
+         <br>
+         <button type="submit" value="submit"  id="sub" name="Submit">SUBMIT</a>
+         </button>
+         <button type="reset" id="res" >RESET</button><br>
+         <b>If already have a account?=> <a href="hlogin.php">login</a></b>
+        </form>
+        <?php  
+         if(isset($_POST['Submit'])){
+            $fname =$_POST["firstname"];
+            $lname =$_POST["lastname"];
+            $num =$_POST["num"];
+            $email =$_POST["email"];
+            $pass =$_POST["pass"];
+            $add =$_POST["address"];
+          
+        $sql ="INSERT INTO details(firstname,lastname,number,email,password,address)
+               VALUES('$fname','$lname','$num','$email','$pass','$add')";
+               if(mysqli_query($con ,$sql)){
+                   echo "YOUR ACCOUNT CREATED SUCCESSFULLY";
+                 }
+               else{
+                    echo "Failed!!!<br>".mysqli_error($con);
+                   }
+         }  
+            
+        
+        ?>
